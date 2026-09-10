@@ -3,6 +3,7 @@ const app = express();
 const path = require("path");
 const Area = require("./models/area");
 const mongoose = require('mongoose');
+const { resolveSoa } = require("dns");
 mongoose.connect('mongodb://localhost:27017/smokingArea')
     .then(() => {
         console.log("コネクションOK");
@@ -45,6 +46,13 @@ app.get("/areas/:id", async (req, res) => {
     const id = req.params.id;
     const area = await Area.findById(id);
     res.render("show", { area });
+});
+
+// 編集画面へのルーティング
+app.get("/areas/:id/edit", async (req, res) => {
+    const id = req.params.id;
+    const area = await Area.findById(id);
+    res.render("edit", { area });
 });
 
 app.listen(3001, () => {
