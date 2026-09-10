@@ -19,9 +19,15 @@ app.set("views", path.join(__dirname, "views"));
 
 app.use(express.urlencoded({ extended: true }));
 
+// 一覧画面へのルーティング
 app.get("/", async (req, res) => {
     const areas = await Area.find({});
     res.render("index", { areas });
+});
+
+// 詳細画面へのルーティング
+app.get("/:id", (req, res) => {
+    res.send("一覧画面です");
 });
 
 app.listen(3001, () => {
