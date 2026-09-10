@@ -26,8 +26,11 @@ app.get("/", async (req, res) => {
 });
 
 // 詳細画面へのルーティング
-app.get("/:id", (req, res) => {
-    res.send("一覧画面です");
+app.get("/areas/:id", async (req, res) => {
+    const id = req.params.id;
+    const area = await Area.findById(id);
+    console.log(area);
+    res.render("show", { area });
 });
 
 app.listen(3001, () => {
