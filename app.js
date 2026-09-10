@@ -29,7 +29,6 @@ app.get("/", async (req, res) => {
 app.get("/areas/:id", async (req, res) => {
     const id = req.params.id;
     const area = await Area.findById(id);
-    console.log(area);
     res.render("show", { area });
 });
 
