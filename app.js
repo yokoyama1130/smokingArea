@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const path = require("path");
 const Area = require("./models/area");
+const methodOverride = require("method-override");
 const mongoose = require('mongoose');
 const { resolveSoa } = require("dns");
 mongoose.connect('mongodb://localhost:27017/smokingArea')
