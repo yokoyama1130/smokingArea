@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const Area = require("../models/area");
 
-mongoose.connect("mongodb://localhost:27017/smoking-area")
+mongoose.connect("mongodb://localhost:27017/smokingArea")
     .then(() => {
         console.log("MongoDB接続OK");
     })
