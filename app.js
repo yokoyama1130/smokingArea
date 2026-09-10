@@ -65,7 +65,13 @@ app.put("/areas/:id", async (req, res) => {
         name: req.body.area.name,
         location: req.body.area.location
     });
-    res.redirect(`/areas/${area._id}`, { area });
+    res.redirect(`/areas/${area._id}`);
+});
+
+// 削除機能
+app.delete("/areas/:id/delete", async (req, res) => {
+    await Area.findByIdAndDelete(req.params.id);
+    res.redirect("/");
 });
 
 app.listen(3001, () => {
