@@ -20,6 +20,8 @@ app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 
 app.use(express.urlencoded({ extended: true }));
+// 編集と削除メソッドができるようにするやつ
+app.use(methodOverride("_method"));
 
 // 一覧画面へのルーティング
 app.get("/", async (req, res) => {
