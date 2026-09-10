@@ -58,6 +58,16 @@ app.get("/areas/:id/edit", async (req, res) => {
     res.render("edit", { area });
 });
 
+// 編集機能
+app.put("/areas/:id", async (req, res) => {
+    const id = req.params.id;
+    const area = await Area.findByIdAndUpdate(id, {
+        name: req.body.area.name,
+        location: req.body.area.location
+    });
+    res.redirect(`/areas/${area._id}`, { area });
+});
+
 app.listen(3001, () => {
     console.log("ポート3001でサーバー起動");
 });
