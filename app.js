@@ -25,6 +25,21 @@ app.get("/", async (req, res) => {
     res.render("index", { areas });
 });
 
+// 新規登録画面へのルーティング
+app.get("/areas/new", (req, res) => {
+    res.render("new");
+});
+
+// 新規登録のルーティング
+app.post("/areas/new", async (req, res) => {
+    const area = new Area({
+        name: req.body.area.name,
+        location: req.body.area.location
+    });
+    await area.save();
+    res.redirect(`/areas/${area._id}`);
+});
+
 // 詳細画面へのルーティング
 app.get("/areas/:id", async (req, res) => {
     const id = req.params.id;
